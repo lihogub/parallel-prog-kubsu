@@ -1,6 +1,7 @@
 #include <iostream>
 #include <stack>
 #include <vector>
+#include <fstream>
 using namespace std;
 
 struct Node {
@@ -70,8 +71,9 @@ Node* treeFromRPN(string rpn) {
     Node* nodeArray = new Node[len];
     for (int i = 0; i < len; i++) {
         nodeArray[i].value = rpn.at(i);
-        if (!(rpn.at(i) >= 'a' && rpn.at(i) <= 'z'))
+        if (!(rpn.at(i) >= 'a' && rpn.at(i) <= 'z')) {
             nodeArray[i].op = true;
+        }
     }
     stack<Node*>* nodeStack = new stack<Node*>();
     for (int i = 0; i < len; i++) {
@@ -90,6 +92,7 @@ Node* treeFromRPN(string rpn) {
     return treeRoot;
 }
 
+
 void discoverTree(Node* root) {
     if (root) {
         cout << '(';
@@ -100,10 +103,11 @@ void discoverTree(Node* root) {
     }
 }
 
+
 int main() {
+    ifstream file("task1.txt", ios::in);
     string s;
-    cout << "exp: ";
-    cin >> s;
+    file >> s;
     string rpn = RPN(s);
     Node* root = treeFromRPN(rpn);
     cout << "tree: ";
