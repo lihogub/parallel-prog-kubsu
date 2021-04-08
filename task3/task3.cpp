@@ -52,10 +52,12 @@ double* replaceCol(double* A, double* B, int targetCol, int n) {
     return newM;
 }
 
+
 void getSolution(double* A, int n, double D) {
     double d = det(A, n);
     cout << d/D << " ";
 }
+
 
 void calc(double* A, double* B, int n) {
     double* _A = new double[n*n];
@@ -71,14 +73,6 @@ void calc(double* A, double* B, int n) {
     }
 }
 
-
-// double A[] = {
-//     1, 1, 1,
-//     0, 1, 1,
-//     0, 0, 1
-// };
-
-// double B[] = {6, 5, 3};
 
 int main() {
     cout << "Enter matrix size: " << endl;
